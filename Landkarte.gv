@@ -1,0 +1,46 @@
+graph Hoehlen {
+node[style=filled, fillcolor="#BBBBBBff"]
+A -- B
+A -- E
+A -- F
+B -- C
+B -- H
+C [fillcolor = "#808080ff"]
+C -- D
+C -- J
+D [fillcolor = "#808080ff"]
+D -- E
+D -- L
+E -- N
+F [fillcolor = "#EEEEEEff"]
+F -- G
+F -- O
+G [fillcolor = "#EEEEEEff"]
+G -- H
+G -- Q
+H -- I
+I [fillcolor = "#808080ff"]
+I -- J
+I -- R
+J [fillcolor = "#808080ff"]
+J -- K
+K [fillcolor = "#808080ff"]
+K -- L
+K -- S
+L [fillcolor = "#808080ff"]
+L -- M
+M -- N
+M -- T
+N [fillcolor = "#EEEEEEff"]
+N -- O
+O [fillcolor = "#EEEEEEff"]
+O -- P
+P [fillcolor = "#EEEEEEff"]
+P -- Q
+P -- T
+Q [fillcolor = "#EEEEEEff"]
+Q -- R
+R -- S
+S -- T
+I [fillcolor = yellow]
+}
