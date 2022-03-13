@@ -49,7 +49,6 @@ Sub Main()
         
         Dim aktion As String
         aktion = SpielerAktion(zustand)
-        Debug.Print aktion
         If aktion = vbNullString Then
             SpielLaeuft = False
         End If
@@ -203,7 +202,7 @@ Function SpielerAktion(zustand As String) As String
         Dim eingabe As String
         ' eingabe = InputBox(prompt:=zustand, Title:="Deine Aktion?")
         
-        eingabe = InputFormAbfragen(zustand)
+        eingabe = InputFormAbfragen(zustand, SpielerHoehle)
         
         If eingabe = vbNullString Then
         
@@ -221,27 +220,6 @@ Function SpielerAktion(zustand As String) As String
     
     SpielerAktion = eingabe
 
-End Function
-
-Function InputFormAbfragen(zustand As String) As String
-    
-    Dim form As New InputForm
-    
-    form.ZustandLabel.Caption = zustand
-    form.LandkarteImage.Picture = LoadPicture(CurrentPicture)
-    
-    form.Show vbModal
-    
-    Dim eingabe As String
-    eingabe = form.result
-    Unload form
-    
-    InputFormAbfragen = eingabe
-
-End Function
-
-Private Function CurrentPicture(aktuellePosition As String) As String
-    CurrentPicture = ThisWorkbook.Path & "\Landkarten\" & aktuellePosition & ".jpg"
 End Function
 
 Sub NeuerSpielzustand(aktion As String)
@@ -274,17 +252,21 @@ Sub GeheNachHoehle(hoehle As String)
     
     Select Case bewohner
     Case Wumpus
-        MsgBox "Der Wumpus hat dich gefressen"
+        'MsgBox "Der Wumpus hat dich gefressen"
+        InputFormAbfragen "Der Wumpus hat dich gefressen!", "Wumpus"
         SpielLaeuft = False
     
     Case Fledermaus
+        'MsgBox "Eine Fledermaus hat dich in einer anderen Höhle abgesetzt!"
         hoehleninhalt(SpielerHoehlenNummer, 1) = ""
         hoehlennummer = EinzelFigur_Setzen(hoehleninhalt, Spieler)
         SpielerHoehlenNummer = hoehlennummer
         hoehleninhalt(SpielerHoehlenNummer, 1) = Spieler
+        InputFormAbfragen "Die Höhle ist von einer Fledermaus besetzt! Sie hat dich in '" & hoehlennummer & "' abgesetzt!", "Fledermaus"
     
     Case Grube
-        MsgBox "Du bist in eine bodenlose Grube gestürzt"
+'        MsgBox "Du bist in eine bodenlose Grube gestürzt"
+        InputFormAbfragen "Du bist in eine bodenlose Grube gestürzt!", "Grube"
         SpielLaeuft = False
     
     Case Else
@@ -309,7 +291,8 @@ Sub SchiesseInHoehle(hoehle As String)
     Select Case bewohner
     Case Wumpus
     
-        MsgBox "Du hast den Wumpus getötet. Herzlichen Glückwunsch!"
+        'MsgBox "Du hast den Wumpus getötet. Herzlichen Glückwunsch!"
+        InputFormAbfragen "Du hast den Wumpus getötet. Herzlichen Glückwunsch!", "Wupus_tot"
         SpielLaeuft = False
     
     Case Else
