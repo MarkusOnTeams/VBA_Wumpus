@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} InputForm 
    Caption         =   "Deine Aktion?"
-   ClientHeight    =   8955
+   ClientHeight    =   8955.001
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   14745
@@ -15,18 +15,20 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-Private Sub CancelButton_Click()
+Public isCanceled As Boolean
+'
 
-    End
+Private Sub CancelButton_Click()
+    
+    CancelForm
 
 End Sub
 
-Private Sub OkButton_Click()
+Private Sub OKButton_Click()
 
     Me.Hide
 
 End Sub
-
 
 Private Sub UserForm_Activate()
 
@@ -36,6 +38,16 @@ End Sub
 
 Private Sub UserForm_QueryClose(Cancel As Integer, CloseMode As Integer)
 
-    Cancel = True
+    If CloseMode = vbFormControlMenu Then
+        CancelForm
+    End If
 
 End Sub
+
+Private Sub CancelForm()
+
+    isCanceled = True
+    Me.Hide
+
+End Sub
+

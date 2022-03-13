@@ -201,7 +201,9 @@ Function SpielerAktion(zustand As String) As String
     Do While Not zulaessigeAntwort
     
         Dim eingabe As String
-        eingabe = InputBox(prompt:=zustand, Title:="Deine Aktion?")
+        ' eingabe = InputBox(prompt:=zustand, Title:="Deine Aktion?")
+        
+        eingabe = InputFormAbfragen(zustand)
         
         If eingabe = vbNullString Then
         
@@ -218,6 +220,26 @@ Function SpielerAktion(zustand As String) As String
     Loop
     
     SpielerAktion = eingabe
+
+End Function
+
+Function InputFormAbfragen(zustand As String) As String
+
+    InputForm.ZustandLabel.Caption = zustand
+    InputForm.EingabeTextbox.Text = ""
+    
+    Dim Bildname As String
+    Bildname = ThisWorkbook.Path & "\Landkarten\" & SpielerHoehle & ".jpg"
+    InputForm.LandkarteImage.Picture = LoadPicture(Bildname)
+    
+    InputForm.Show vbModal
+    
+    ' InputForm.Hide
+            
+    Dim eingabe As String
+    eingabe = InputForm.EingabeTextbox.Text
+
+    InputFormAbfragen = eingabe
 
 End Function
 
@@ -352,6 +374,3 @@ Sub WumpusBewegtSich()
     End If
     
 End Sub
-
-
-'neue Zeile
