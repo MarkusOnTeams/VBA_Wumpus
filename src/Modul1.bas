@@ -224,23 +224,24 @@ Function SpielerAktion(zustand As String) As String
 End Function
 
 Function InputFormAbfragen(zustand As String) As String
-
-    InputForm.ZustandLabel.Caption = zustand
-    InputForm.EingabeTextbox.Text = ""
     
-    Dim Bildname As String
-    Bildname = ThisWorkbook.Path & "\Landkarten\" & SpielerHoehle & ".jpg"
-    InputForm.LandkarteImage.Picture = LoadPicture(Bildname)
+    Dim form As New InputForm
     
-    InputForm.Show vbModal
+    form.ZustandLabel.Caption = zustand
+    form.LandkarteImage.Picture = LoadPicture(CurrentPicture)
     
-    ' InputForm.Hide
-            
+    form.Show vbModal
+    
     Dim eingabe As String
-    eingabe = InputForm.EingabeTextbox.Text
-
+    eingabe = form.result
+    Unload form
+    
     InputFormAbfragen = eingabe
 
+End Function
+
+Private Function CurrentPicture(aktuellePosition As String) As String
+    CurrentPicture = ThisWorkbook.Path & "\Landkarten\" & aktuellePosition & ".jpg"
 End Function
 
 Sub NeuerSpielzustand(aktion As String)

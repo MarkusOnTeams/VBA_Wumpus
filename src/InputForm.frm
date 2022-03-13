@@ -16,6 +16,7 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Public isCanceled As Boolean
+Public result As String
 '
 
 Private Sub CancelButton_Click()
@@ -25,7 +26,8 @@ Private Sub CancelButton_Click()
 End Sub
 
 Private Sub OKButton_Click()
-
+    
+    result = Me.EingabeTextbox
     Me.Hide
 
 End Sub
@@ -45,7 +47,8 @@ Private Sub UserForm_QueryClose(Cancel As Integer, CloseMode As Integer)
 End Sub
 
 Private Sub CancelForm()
-
+    
+    result = vbNullString
     isCanceled = True
     Me.Hide
 
