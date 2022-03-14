@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} InputForm 
    Caption         =   "Deine Aktion?"
-   ClientHeight    =   8955
+   ClientHeight    =   8955.001
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   14745
@@ -38,4 +38,9 @@ Private Sub UserForm_QueryClose(Cancel As Integer, CloseMode As Integer)
 
     Cancel = True
 
+End Sub
+
+Sub testMsgBox()
+
+MsgBox "Hallo"
 End Sub
