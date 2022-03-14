@@ -26,3 +26,6 @@ Private Function CurrentPicture(aktuellePosition As String) As String
 End Function
 
 
+Private Sub bar()
+    Debug.Print "Foo!"
+End Sub
