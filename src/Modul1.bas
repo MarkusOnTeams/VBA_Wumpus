@@ -36,14 +36,27 @@ Dim SpielLaeuft As Boolean
 
 Sub Main()
     
+    SpielInitalisieren
+    
+    Do While SpielLaeuft
+        
+        SpielZug
+        
+    Loop
+    
+End Sub
+
+Private Sub SpielInitalisieren()
     LandkarteEinlesen
     StartAufstellungFiguren_setzen
     
     AnzahlPfeile = AnzahlPfeileAmAnfang
     
     SpielLaeuft = True
-    Do While SpielLaeuft
-        
+
+End Sub
+
+Private Sub SpielZug()
         Dim zustand As String
         zustand = SpielZustand()
         
@@ -54,9 +67,7 @@ Sub Main()
         End If
         
         NeuerSpielzustand aktion
-        
-    Loop
-    
+
 End Sub
 
 Sub LandkarteEinlesen()

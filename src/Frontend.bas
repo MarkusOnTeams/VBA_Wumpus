@@ -25,7 +25,3 @@ Private Function CurrentPicture(aktuellePosition As String) As String
     CurrentPicture = ThisWorkbook.Path & "\Landkarten\" & aktuellePosition & ".jpg"
 End Function
 
-
-Private Sub bar()
-    Debug.Print "Foo!"
-End Sub
