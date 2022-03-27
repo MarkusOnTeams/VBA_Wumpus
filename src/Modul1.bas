@@ -3,70 +3,67 @@ Option Explicit
 Option Base 1
 
 Const AnzahlHoehlen As Integer = 20
-Const AnzahlPfeileAmAnfang As Integer = 5
 
 Const AktionGehen As String = "_"
 Const AktionSchiessen As String = ">"
 
 Const Spieler As String = "Spieler"
+Const AnzahlPfeileAmAnfang As Integer = 5
+Public AnzahlPfeile As Integer
+Public SpielerHoehle As String
+
 Const Fledermaus As String = "Fledermaus"
 Const Wumpus As String = "Wumpus"
 Const Grube As String = "Grube"
 
-Dim Landkarte As Variant
-Dim hoehleninhalt As Variant
+Public Landkarte As Variant
+Public hoehleninhalt As Variant
+Public SpielerHoehlenNummer As Integer
+Public WumpusHoehlenNummer As Integer
 
-Dim SpielerHoehlenNummer As Integer
-Dim WumpusHoehlenNummer As Integer
 
-Dim WumpusInNachbarhoehle As Boolean
+Public NachHoehle1 As String
+Public NachHoehle2 As String
+Public NachHoehle3 As String
+Public Navi(1 To 4) As Variant
+Public WumpusInNachbarhoehle As Boolean
 
-Dim SpielerHoehle As String
-Dim NachHoehle1 As String
-Dim NachHoehle2 As String
-Dim NachHoehle3 As String
+Public MoeglicheAktionen As Scripting.Dictionary
 
-Dim MoeglicheAktionen As Scripting.Dictionary
 
-Dim Navi(1 To 4) As Variant
 
-Dim AnzahlPfeile As Integer
-
-Dim SpielLaeuft As Boolean
+Public SpielLaeuft As Boolean
 
 Sub Main()
     
     SpielInitalisieren
     
     Do While SpielLaeuft
-        
         SpielZug
-        
     Loop
     
 End Sub
 
 Private Sub SpielInitalisieren()
+
     LandkarteEinlesen
     StartAufstellungFiguren_setzen
-    
     AnzahlPfeile = AnzahlPfeileAmAnfang
-    
     SpielLaeuft = True
 
 End Sub
 
 Private Sub SpielZug()
-        Dim zustand As String
-        zustand = SpielZustand()
+    Dim zustand As String
+    zustand = SpielZustand()
         
-        Dim aktion As String
-        aktion = SpielerAktion(zustand)
-        If aktion = vbNullString Then
-            SpielLaeuft = False
-        End If
+    Dim aktion As String
+    aktion = SpielerAktion(zustand)
+    If aktion = vbNullString Then
+        SpielLaeuft = False
+    End If
         
-        NeuerSpielzustand aktion
+    NeuerSpielzustand aktion
 
 End Sub
 

@@ -2,8 +2,6 @@ Attribute VB_Name = "Frontend"
 '@Folder("Wumpus.Frontend")
 Option Explicit
 
-Private foo As Boolean
-
 Public Function InputFormAbfragen(zustand As String, SpielerHoehle As String) As String
     
     Dim form As New InputForm
