@@ -2,6 +2,8 @@ Attribute VB_Name = "Main"
 Option Explicit
 Option Base 1
 
+#Const CheatMode = True
+
 Public FigurenDict As Scripting.Dictionary
 Public SpielerFigur As FigurInterface
 Public SpielerAlsSpieler As Spieler
@@ -20,10 +22,14 @@ Sub Main()
     
     Hoehlensystem.Aufbauen
     
-    Hoehlen_fuellen Figuren_generieren()
-    
     SpielInfos.hoehlenInhalte = Hoehlensystem.hoehlenInhalte
     
+    Hoehlen_fuellen Figuren_generieren()
+
+#If CheatMode Then
+    SpielInfos.hoehlenInhalte = Hoehlensystem.hoehlenInhalte
+#End If
+
     SpielLaeuft = True
     Do While SpielLaeuft
     
@@ -40,6 +46,10 @@ Sub Main()
         End If
 
         NeuerSpielzustand aktion
+        
+#If CheatMode Then
+        SpielInfos.hoehlenInhalte = Hoehlensystem.hoehlenInhalte
+#End If
         
     Loop
     
@@ -285,8 +295,6 @@ Sub GeheNachHoehle(hoehlenName As String)
 
     End If
     
-    SpielInfos.hoehlenInhalte = Hoehlensystem.hoehlenInhalte
-
 End Sub
 
 Sub SchiesseInHoehle(ByVal hoehlenName As String)
@@ -313,8 +321,6 @@ Sub SchiesseInHoehle(ByVal hoehlenName As String)
         MsgBox "Du hast keine Pfeile mehr. Dumm gelaufen ..."
         SpielLaeuft = False
     End If
-
-    SpielInfos.hoehlenInhalte = Hoehlensystem.hoehlenInhalte
 
 End Sub
 
