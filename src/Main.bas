@@ -4,7 +4,7 @@ Option Base 1
 
 Public FigurenDict As Scripting.Dictionary
 Public SpielerFigur As FigurInterface
-Public SpielerAlsSpieler As Spieler
+Public SpielerAlsSpieler As spieler
 Public WumpusFigur As FigurInterface
 
 Public WumpusInNachbarhoehle As Boolean
@@ -12,9 +12,9 @@ Public WumpusInNachbarhoehle As Boolean
 Const AktionGehen As String = "_"
 Const AktionSchiessen As String = ">"
 
-Dim MoeglicheAktionen As Scripting.Dictionary
+Public MoeglicheAktionen As Scripting.Dictionary
 
-Dim SpielLaeuft As Boolean
+Public SpielLaeuft As Boolean
 
 Sub Main()
     
@@ -68,7 +68,7 @@ Private Function Figuren_generieren() As Collection
         
         Select Case figurArt
         Case "Spieler"
-            Set neueFigur = New Spieler
+            Set neueFigur = New spieler
             Set SpielerFigur = neueFigur
             Set SpielerAlsSpieler = neueFigur
         
@@ -118,7 +118,7 @@ End Sub
 
 Function SpielZustand() As String
 
-Dim ergebnis As String
+    Dim ergebnis As String
 
     Dim spielerHoehle As String
     spielerHoehle = SpielerFigur.aktuelleHoehle.name
@@ -260,26 +260,29 @@ Sub GeheNachHoehle(hoehlenName As String)
         Set SpielerFigur.aktuelleHoehle = nachHoehle
     Else
 
-        Dim figur As FigurInterface
-        Set figur = nachHoehle.inhalt
+'        Dim figur As FigurInterface
+'        Set figur = nachHoehle.inhalt
+'        figur.Kollision
         
-        Select Case figur.Art
-        Case "Wumpus"
-            MsgBox "Der Wumpus hat dich gefressen"
-            SpielLaeuft = False
-    
-        Case "Fledermaus"
-            MsgBox "Die Fledermaus " & figur.name & " hat dich in eine andere Höhle verschleppt"
-            Set SpielerFigur.aktuelleHoehle = Hoehlensystem.FreieHoehle
-            
-        Case "Grube"
-            MsgBox "Du bist in eine bodenlose Grube gestürzt"
-            SpielLaeuft = False
-    
-        Case Else
-            MsgBox "Unbekannte Art " & figur.Art
-            Stop
-        End Select
+        nachHoehle.inhalt.Kollision
+        SpielLaeuft = False
+'        Select Case figur.Art
+'        Case "Wumpus"
+'            MsgBox "Der Wumpus hat dich gefressen"
+'            SpielLaeuft = False
+'
+'        Case "Fledermaus"
+'            MsgBox "Die Fledermaus " & figur.name & " hat dich in eine andere Höhle verschleppt"
+'            Set SpielerFigur.aktuelleHoehle = Hoehlensystem.FreieHoehle
+'
+'        Case "Grube"
+'            MsgBox "Du bist in eine bodenlose Grube gestürzt"
+'            SpielLaeuft = False
+'
+'        Case Else
+'            MsgBox "Unbekannte Art " & figur.Art
+'            Stop
+'        End Select
 
     End If
     

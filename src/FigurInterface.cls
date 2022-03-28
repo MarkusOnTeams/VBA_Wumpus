@@ -15,3 +15,6 @@ Public name As String
 Public Art As String
 Public wahrnehmung As String
 Public aktuelleHoehle As Hoehle
+
+Public Sub Kollision()
+End Sub
