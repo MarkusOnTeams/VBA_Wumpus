@@ -12,6 +12,9 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Public name As String
-Public Art As String
 Public wahrnehmung As String
 Public aktuelleHoehle As Hoehle
+
+Public Property Get Art() As String
+End Property
+

@@ -69,11 +69,13 @@ Private Function Figuren_generieren() As Collection
         Select Case figurArt
         Case "Spieler"
             Set neueFigur = New Spieler
+            
             Set SpielerFigur = neueFigur
             Set SpielerAlsSpieler = neueFigur
         
         Case "Wumpus"
             Set neueFigur = New Wumpus
+            
             Set WumpusFigur = neueFigur
         
         Case "Fledermaus"

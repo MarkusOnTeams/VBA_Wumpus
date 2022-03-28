@@ -41,11 +41,6 @@ Private Property Get FigurInterface_Art() As String
     FigurInterface_Art = figurArt
 End Property
 
-Private Property Let FigurInterface_Art(ByVal neuerWert As String)
-    MsgBox "Geht nicht"
-    Stop
-End Property
-
 Private Property Get FigurInterface_Wahrnehmung() As String
     FigurInterface_Wahrnehmung = this.wahrnehmung
 End Property
