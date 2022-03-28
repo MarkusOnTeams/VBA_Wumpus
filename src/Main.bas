@@ -265,7 +265,7 @@ Sub GeheNachHoehle(hoehlenName As String)
 '        figur.Kollision
         
         nachHoehle.inhalt.Kollision
-        SpielLaeuft = False
+        
 '        Select Case figur.Art
 '        Case "Wumpus"
 '            MsgBox "Der Wumpus hat dich gefressen"
