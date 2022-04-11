@@ -6,7 +6,7 @@ Option Base 1
 
 Public FigurenDict As Scripting.Dictionary
 Public SpielerFigur As FigurInterface
-Public SpielerAlsSpieler As spieler
+Public SpielerAlsSpieler As Spieler
 Public WumpusFigur As FigurInterface
 
 Public WumpusInNachbarhoehle As Boolean

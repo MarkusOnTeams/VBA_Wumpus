@@ -41,8 +41,8 @@ Private Property Get FigurInterface_Art() As String
     FigurInterface_Art = figurArt
 End Property
 
-Private Property Get FigurInterface_Wahrnehmung() As String
-    FigurInterface_Wahrnehmung = this.wahrnehmung
+Private Property Get FigurInterface_wahrnehmung() As String
+    FigurInterface_wahrnehmung = this.wahrnehmung
 End Property
 
 Private Property Let FigurInterface_wahrnehmung(ByVal neuerWert As String)
