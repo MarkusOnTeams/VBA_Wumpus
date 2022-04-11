@@ -18,7 +18,7 @@ Private Const figurArt As String = "Fledermaus"
 Private Type figurType
     name As String
     wahrnehmung As String
-    aktuelleHoehle As Hoehle
+    aktuelleHoehle As hoehle
 End Type
 
 Private this As figurType
@@ -49,11 +49,11 @@ Private Property Let FigurInterface_wahrnehmung(ByVal neuerWert As String)
     this.wahrnehmung = neuerWert
 End Property
 
-Private Property Get FigurInterface_aktuelleHoehle() As Hoehle
+Private Property Get FigurInterface_aktuelleHoehle() As hoehle
     Set FigurInterface_aktuelleHoehle = this.aktuelleHoehle
 End Property
 
-Private Property Set FigurInterface_aktuelleHoehle(ByVal neueHoehle As Hoehle)
+Private Property Set FigurInterface_aktuelleHoehle(ByVal neueHoehle As hoehle)
     If Not this.aktuelleHoehle Is Nothing Then Set this.aktuelleHoehle.inhalt = Nothing
     Set this.aktuelleHoehle = neueHoehle
 End Property

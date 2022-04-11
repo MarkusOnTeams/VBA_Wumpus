@@ -11,7 +11,7 @@ Option Explicit
 
 Private Type HoehleType
     name As String
-    nachbarHoehlen() As Hoehle
+    nachbarHoehlen() As hoehle
     figur As FigurInterface
 End Type
 Private this As HoehleType
@@ -22,12 +22,12 @@ Private Sub Class_Initialize()
 
 End Sub
 
-Public Function Constructor(ByVal neuerName As String) As Hoehle
+Public Function Constructor(ByVal neuerName As String) As hoehle
 Attribute Constructor.VB_UserMemId = 0
 ' Default Member!
 ' Attribute Constructor.VB_UserMemId = 0
 
-    Dim neueHoehle As New Hoehle
+    Dim neueHoehle As New hoehle
 
     neueHoehle.name = neuerName
         
@@ -43,11 +43,11 @@ Public Property Let name(ByVal newValue As String)
     this.name = newValue
 End Property
 
-Public Property Get nachbarHoehlen() As Hoehle()
+Public Property Get nachbarHoehlen() As hoehle()
     nachbarHoehlen = this.nachbarHoehlen
 End Property
 
-Public Property Let nachbarHoehlen(ByRef neueNachbarhoehlen() As Hoehle)
+Public Property Let nachbarHoehlen(ByRef neueNachbarhoehlen() As hoehle)
     this.nachbarHoehlen = neueNachbarhoehlen
 End Property
 
@@ -71,7 +71,7 @@ Public Property Get nachbarHoehlenNamen() As String()
 
 End Property
 
-Public Property Set nachbarHoehle(ByVal neueNachbarhoehle As Hoehle)
+Public Property Set nachbarHoehle(ByVal neueNachbarhoehle As hoehle)
     
     Dim count As Integer
     

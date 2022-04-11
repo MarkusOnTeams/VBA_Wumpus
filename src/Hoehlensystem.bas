@@ -29,9 +29,9 @@ Private Sub HoehlenOhneNachbarnAufbauen()
         Dim hoehlenName As String
         hoehlenName = this.HoehlenNamen(Index)
         
-        Dim neueHoehle As Hoehle
+        Dim neueHoehle As hoehle
         'Set neueHoehle = Hoehle.Constructor(hoehlenName)
-        Set neueHoehle = Hoehle(hoehlenName)
+        Set neueHoehle = hoehle(hoehlenName)
         
         this.HoehlenDict.Add hoehlenName, neueHoehle
     
@@ -47,8 +47,8 @@ Private Sub HoehlenMitIhrenNachbarnVerbinden()
         Dim hoehlenName As String
         hoehlenName = this.HoehlenNamen(Index)
         
-        Dim Hoehle As Hoehle
-        Set Hoehle = this.HoehlenDict(hoehlenName)
+        Dim hoehle As hoehle
+        Set hoehle = this.HoehlenDict(hoehlenName)
     
         Dim nachbarNamen As Variant
         nachbarNamen = SpielInfos.hoehlennachbarNamen(hoehlenName)
@@ -59,10 +59,10 @@ Private Sub HoehlenMitIhrenNachbarnVerbinden()
             Dim nachbarName As Variant
             nachbarName = nachbarNamen(nachbarIndex)
                 
-            Dim nachbarHoehle As Hoehle
+            Dim nachbarHoehle As hoehle
             Set nachbarHoehle = this.HoehlenDict(nachbarName)
             
-            Set Hoehle.nachbarHoehle = nachbarHoehle
+            Set hoehle.nachbarHoehle = nachbarHoehle
         
         Next nachbarIndex
         
@@ -70,9 +70,9 @@ Private Sub HoehlenMitIhrenNachbarnVerbinden()
 
 End Sub
 
-Public Function FreieHoehle() As Hoehle
+Public Function FreieHoehle() As hoehle
 
-    Dim aktuelleHoehle As Hoehle
+    Dim aktuelleHoehle As hoehle
 
     Dim zufallszahl As Integer
     
@@ -106,12 +106,12 @@ Public Function hoehlenInhalte() As String()
         Dim hoehlenName As String
         hoehlenName = this.HoehlenNamen(Index)
     
-        Dim Hoehle As Hoehle
-        Set Hoehle = this.HoehlenDict(hoehlenName)
+        Dim hoehle As hoehle
+        Set hoehle = this.HoehlenDict(hoehlenName)
     
         Dim figurName As String
         figurName = vbNullString
-        If Not Hoehle.IstLeer Then figurName = Hoehle.inhalt.name
+        If Not hoehle.IstLeer Then figurName = hoehle.inhalt.name
         
         figuren(Index) = figurName
     

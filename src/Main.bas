@@ -20,6 +20,17 @@ Public SpielLaeuft As Boolean
 
 Sub Main()
     
+    SpielInitalisieren
+
+    SpielLaeuft = True
+    Do While SpielLaeuft
+        SpielZug
+    Loop
+    
+End Sub
+
+Private Sub SpielInitalisieren()
+
     Hoehlensystem.Aufbauen
     
     SpielInfos.hoehlenInhalte = Hoehlensystem.hoehlenInhalte
@@ -30,30 +41,31 @@ Sub Main()
     SpielInfos.hoehlenInhalte = Hoehlensystem.hoehlenInhalte
 #End If
 
-    SpielLaeuft = True
-    Do While SpielLaeuft
-    
-        DoEvents
-        
-        Dim zustand As String
-        zustand = SpielZustand()
-
-        Dim aktion As String
-        aktion = SpielerAktion(zustand)
-        Debug.Print aktion
-        If aktion = vbNullString Then
-            SpielLaeuft = False
-        End If
-
-        NeuerSpielzustand aktion
-        
-#If CheatMode Then
-        SpielInfos.hoehlenInhalte = Hoehlensystem.hoehlenInhalte
-#End If
-        
-    Loop
-    
 End Sub
+
+Private Sub SpielZug()
+    
+    DoEvents
+    
+    Dim zustand As String
+    zustand = SpielZustand()
+
+    Dim aktion As String
+    aktion = SpielerAktion(zustand)
+    Debug.Print aktion
+    If aktion = vbNullString Then
+        SpielLaeuft = False
+    End If
+
+    NeuerSpielzustand aktion
+    
+#If CheatMode Then
+    SpielInfos.hoehlenInhalte = Hoehlensystem.hoehlenInhalte
+#End If
+
+
+End Sub
+
 
 Private Function Figuren_generieren() As Collection
 
@@ -116,7 +128,7 @@ Private Sub Hoehlen_fuellen(ByVal figuren As Collection)
     Dim figur As FigurInterface
     For Each figur In figuren
         
-        Dim neueHoehle As Hoehle
+        Dim neueHoehle As hoehle
         Set neueHoehle = Hoehlensystem.FreieHoehle
         
         Set figur.aktuelleHoehle = neueHoehle
@@ -131,10 +143,10 @@ Function SpielZustand() As String
 
     Dim ergebnis As String
 
-    Dim spielerHoehle As String
-    spielerHoehle = SpielerFigur.aktuelleHoehle.name
+    Dim SpielerHoehle As String
+    SpielerHoehle = SpielerFigur.aktuelleHoehle.name
     
-    Dim nachbarHoehlen() As Hoehle
+    Dim nachbarHoehlen() As hoehle
     nachbarHoehlen = SpielerFigur.aktuelleHoehle.nachbarHoehlen
     
     Dim anzahlNachbarhoehlen As Integer
@@ -143,7 +155,7 @@ Function SpielZustand() As String
     Dim nachHoehle() As String
     nachHoehle = SpielerFigur.aktuelleHoehle.nachbarHoehlenNamen
     
-    ergebnis = "Du bist in Höhle " & spielerHoehle & vbLf
+    ergebnis = "Du bist in Höhle " & SpielerHoehle & vbLf
     ergebnis = ergebnis & "Es geht nach "
     
     Dim trenner As String
@@ -245,18 +257,18 @@ End Function
 Sub NeuerSpielzustand(aktion As String)
 
     Dim gehenOderSchiessen As String
-    Dim Hoehle As String
+    Dim hoehle As String
 
     gehenOderSchiessen = Left(aktion, 1)
-    Hoehle = Mid(aktion, 2)
+    hoehle = Mid(aktion, 2)
 
     Select Case gehenOderSchiessen
 
     Case AktionGehen
-        GeheNachHoehle Hoehle
+        GeheNachHoehle hoehle
 
     Case AktionSchiessen
-        SchiesseInHoehle Hoehle
+        SchiesseInHoehle hoehle
 
     End Select
 
@@ -264,7 +276,7 @@ End Sub
 
 Sub GeheNachHoehle(hoehlenName As String)
 
-    Dim nachHoehle As Hoehle
+    Dim nachHoehle As hoehle
     Set nachHoehle = Hoehlensystem.Item(hoehlenName)
 
     If nachHoehle.IstLeer Then
@@ -279,7 +291,7 @@ End Sub
 
 Sub SchiesseInHoehle(ByVal hoehlenName As String)
 
-    Dim nachHoehle As Hoehle
+    Dim nachHoehle As hoehle
     Set nachHoehle = Hoehlensystem.Item(hoehlenName)
 
     Dim figur As FigurInterface
@@ -312,13 +324,13 @@ End Function
 
 Sub WumpusBewegtSich()
 
-    Dim nachbarHoehlen() As Hoehle
+    Dim nachbarHoehlen() As hoehle
     nachbarHoehlen = WumpusFigur.aktuelleHoehle.nachbarHoehlen
 
     Dim zufallszahl As Integer
     zufallszahl = Int(Rnd() * UBound(nachbarHoehlen) + 1)
 
-    Dim nachHoehle As Hoehle
+    Dim nachHoehle As hoehle
     Do
         Set nachHoehle = nachbarHoehlen(zufallszahl)
         If nachHoehle.IstLeer Then Exit Do

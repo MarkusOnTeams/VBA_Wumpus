@@ -13,7 +13,7 @@ Option Explicit
 
 Public name As String
 Public wahrnehmung As String
-Public aktuelleHoehle As Hoehle
+Public aktuelleHoehle As hoehle
 
 Public Property Get Art() As String
 End Property
