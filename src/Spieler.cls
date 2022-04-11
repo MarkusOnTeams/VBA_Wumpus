@@ -32,11 +32,11 @@ Private Sub Class_Initialize()
     this.AnzahlPfeile = AnzahlPfeileAmAnfang
 End Sub
 
-Private Property Get FigurInterface_Name() As String
-    FigurInterface_Name = this.name
+Private Property Get FigurInterface_name() As String
+    FigurInterface_name = this.name
 End Property
 
-Private Property Let FigurInterface_Name(ByVal neuerWert As String)
+Private Property Let FigurInterface_name(ByVal neuerWert As String)
     this.name = neuerWert
 End Property
 
@@ -48,15 +48,15 @@ Private Property Get FigurInterface_Wahrnehmung() As String
     FigurInterface_Wahrnehmung = this.wahrnehmung
 End Property
 
-Private Property Let FigurInterface_Wahrnehmung(ByVal neuerWert As String)
+Private Property Let FigurInterface_wahrnehmung(ByVal neuerWert As String)
     this.wahrnehmung = neuerWert
 End Property
 
-Private Property Get FigurInterface_AktuelleHoehle() As Hoehle
-    Set FigurInterface_AktuelleHoehle = this.aktuelleHoehle
+Private Property Get FigurInterface_aktuelleHoehle() As Hoehle
+    Set FigurInterface_aktuelleHoehle = this.aktuelleHoehle
 End Property
 
-Private Property Set FigurInterface_AktuelleHoehle(ByVal neueHoehle As Hoehle)
+Private Property Set FigurInterface_aktuelleHoehle(ByVal neueHoehle As Hoehle)
     If Not this.aktuelleHoehle Is Nothing Then Set this.aktuelleHoehle.inhalt = Nothing
     Set this.aktuelleHoehle = neueHoehle
     Set neueHoehle.inhalt = Me
@@ -69,4 +69,7 @@ End Property
 Public Property Let AnzahlPfeile(ByVal neuerWert As Integer)
     this.AnzahlPfeile = neuerWert
 End Property
+
+Private Sub FigurInterface_Kollision()
+End Sub
 

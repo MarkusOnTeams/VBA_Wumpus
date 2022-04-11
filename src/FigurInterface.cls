@@ -18,3 +18,5 @@ Public aktuelleHoehle As Hoehle
 Public Property Get Art() As String
 End Property
 
+Public Sub Kollision()
+End Sub
