@@ -260,30 +260,8 @@ Sub GeheNachHoehle(hoehlenName As String)
         Set SpielerFigur.aktuelleHoehle = nachHoehle
     Else
 
-'        Dim figur As FigurInterface
-'        Set figur = nachHoehle.inhalt
-'        figur.Kollision
-        
         nachHoehle.inhalt.Kollision
         
-'        Select Case figur.Art
-'        Case "Wumpus"
-'            MsgBox "Der Wumpus hat dich gefressen"
-'            SpielLaeuft = False
-'
-'        Case "Fledermaus"
-'            MsgBox "Die Fledermaus " & figur.name & " hat dich in eine andere Höhle verschleppt"
-'            Set SpielerFigur.aktuelleHoehle = Hoehlensystem.FreieHoehle
-'
-'        Case "Grube"
-'            MsgBox "Du bist in eine bodenlose Grube gestürzt"
-'            SpielLaeuft = False
-'
-'        Case Else
-'            MsgBox "Unbekannte Art " & figur.Art
-'            Stop
-'        End Select
-
     End If
     
     SpielInfos.hoehlenInhalte = Hoehlensystem.hoehlenInhalte
